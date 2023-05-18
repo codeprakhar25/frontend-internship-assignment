@@ -1,7 +1,7 @@
 import {  Injectable, } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpRequestOptions } from '../models/http-request-options.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 
 const ROOT_URL = 'https://openlibrary.org';
 
@@ -13,9 +13,13 @@ export class ApiService {
     private httpClient: HttpClient
   ) {}
 
-  get<T>(url: string, config?: HttpRequestOptions): Observable<T> {
+  get<T>(url: string, page: number, pageSize: number): Observable<T> {
+    // eslint-disable-next-line prefer-const
+    let params = new HttpParams()
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString());
     const apiPath = `${ROOT_URL}${url}`;
-    return this.httpClient.get<T>(apiPath, config);
+    return this.httpClient.get<T>(apiPath,{params});
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

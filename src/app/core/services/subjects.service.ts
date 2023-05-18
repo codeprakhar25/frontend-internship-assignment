@@ -12,15 +12,15 @@ export class SubjectsService {
 
   getAllBooks(subjectName: string): Observable<BookResponse> {
     const limit = 1000;
-    return this.apiService.get(`/subjects/${subjectName.toLowerCase().split(' ').join('_')}.json?limit=${limit}`);
+    return this.apiService.get(`/subjects/${subjectName.toLowerCase().split(' ').join('_')}.json?limit=${limit}`,1,10);
   }
   getAllQueryBooks(searchValue: string): Observable<SearchResponse> {
     // const limit = 1000;
     console.log(searchValue.toLowerCase().split(' ').join('+'))
-    return this.apiService.get(`/search.json?q=${searchValue.toLowerCase().split(' ').join('+')}`);
+    return this.apiService.get(`/search.json?q=${searchValue.toLowerCase().split(' ').join('+')}`,1,10);
   }
   getByAuthor(searchAuthor: string): Observable<AuthorResponse>{
-    return this.apiService.get(`/search/authors.json?q=${searchAuthor.toLowerCase().split(' ').join('+')}`);
+    return this.apiService.get(`/search/authors.json?q=${searchAuthor.toLowerCase().split(' ').join('+')}`,1,10);
   }
 }
 // https://openlibrary.org/search?q=aa&mode=everything

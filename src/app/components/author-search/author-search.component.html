@@ -1,6 +1,6 @@
 
 <div class="tw-m-24-px">
-    <!-- <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div> -->
+    <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} Author book{{ booksList.length > 1 ? "s" : "" }} on Author Name {{ subjectName }}</div>
   
     <ng-container>
         <table class="table-view">
@@ -9,19 +9,18 @@
                 <tr class="table-row">
                     <th class="header">Title and Sub Title</th>
                     <th class="header">Author</th>
-                    <th class="header">First Publish Year</th>
+                    <th class="header">No. of books by the author</th>
                 </tr>
             </thead>
             <tbody class="table-body">
                 <tr *ngFor="let book of booksList" class="row-data">
-              <div>No. of books by the author : {{ book.work_count }}</div>
+              <div> {{ book.top_work }}</div>
             <td>
-              <a class="tw-no-underline" href="https://openlibrary.org{{ book.key }}" target="_blank">{{ book.type }}</a>
+              <a class="tw-no-underline" href="https://openlibrary.org/{{ book.key }}" target="_blank">   {{ book.name }}</a>
             </td>
             <td>
-              {{ book.name }}
+              {{ book.work_count }}
             </td>
-            <td>{{ book.top_work }}</td>
 
           </tr>
         </tbody>

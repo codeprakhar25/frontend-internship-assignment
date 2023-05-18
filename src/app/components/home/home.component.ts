@@ -15,8 +15,10 @@ export class HomeComponent implements OnInit {
   searchValue: string = "";
   searchAuthor: string= "";
   bookSearch: FormControl;
+
   isLoading: boolean = true;
-   
+   bookbool: boolean = false;
+   authbool: boolean=false;
   allSearchBooks: QueryBook[] = [];
 
   allAuthorBooks: AuthorBook[]= [];
@@ -26,7 +28,9 @@ export class HomeComponent implements OnInit {
     private subjectsService: SubjectsService 
   ) {
     this.bookSearch = new FormControl('');
-
+    if(this.searchValue==""){
+      this.bookbool=false;
+    }
   }
   
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,27 +47,43 @@ export class HomeComponent implements OnInit {
       console.log(data)
       this.allSearchBooks = data?.docs;
       // this.subjectsArray = data;
-      this.isLoading = false;
+      this.searchValue.length>1 ?  
+      this.bookbool = true
+      :
+      this.bookbool = false
+      data.docs.length>1 ?  
+      this.isLoading = false
+      :
+      this.isLoading = true
     });
     console.log(this.allSearchBooks)
   }
   close(){
     this.searchValue="";
     console.log('clopsing for:', this.searchValue);
-
+    this.bookbool=false;
   }
   getByAuthor(){
     console.log('Searching for author:', this.searchAuthor);
+    this.authbool=true;
     this.subjectsService.getByAuthor(this.searchAuthor).subscribe((data) => {
       console.log(data)
       this.allAuthorBooks = data?.docs;
-      this.isLoading = false;
+      this.searchAuthor.length>1 ?  
+      this.authbool = true
+      :
+      this.authbool = false
+      data.docs.length>1 ?  
+      this.isLoading = false
+      :
+      this.isLoading = true
     });
     console.log(this.allAuthorBooks)
   }
   closeAuthor(){
-    this.searchValue="";
+    this.searchAuthor="";
     console.log('clopsing for:', this.searchAuthor);
+    this.authbool=false;
   }
   ngOnInit(): void {
     this.bookSearch.valueChanges

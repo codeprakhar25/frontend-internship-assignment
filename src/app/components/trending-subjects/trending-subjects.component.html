@@ -1,6 +1,11 @@
+<mat-icon class="tw-mt-16-px tw-cursor-pointer" aria-label="Back Icon" routerLink="">Back</mat-icon>
+
 <div *ngIf="allBooks.length > 0">
   <front-end-internship-assignment-table-view
   [booksList]="allBooks"
   [subjectName]="subjectName"
   ></front-end-internship-assignment-table-view>
+</div>
+<div *ngIf="!(allBooks.length > 0)">
+<p>Loading...</p>
 </div>
