@@ -1,6 +1,7 @@
 export interface Author {
   key: string;
   name: string;
+  
 }
 
 export interface Availability {
@@ -51,4 +52,8 @@ export interface BookResponse {
   subject_type: string;
   work_count: number;
   works: Book[];
+}
+
+export interface search {
+  searchValue: string;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, Input } from '@angular/core';
 import { Book } from 'src/app/core/models/book-response.model';
 

@@ -10,8 +10,10 @@ import { Book } from 'src/app/core/models/book-response.model';
 })
 export class TrendingSubjectsComponent implements OnInit {
 
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   isLoading: boolean = true;
 
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   subjectName: string = '';
 
   allBooks: Book[] = [];
@@ -34,7 +36,7 @@ export class TrendingSubjectsComponent implements OnInit {
       this.subjectName = params.get('name') || '';
       this.isLoading = true;
       this.getAllBooks();
-    });
+    });  
   }
 
 }

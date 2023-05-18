@@ -8,6 +8,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 *,
+y
 html,
 body {
   @apply
@@ -16,7 +17,6 @@ body {
   tw-box-border
   tw-antialiased;
 }
-
 html,
 body {
   @apply tw-h-full tw-w-full
