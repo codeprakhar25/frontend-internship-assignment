@@ -45,7 +45,33 @@ export interface Book {
   has_fulltext: boolean;
   availability: Availability;
 }
-
+export interface QueryBook{
+  key: string;
+  title: string;
+  seed:[];
+  edition_count: number;
+  cover_id: number;
+  cover_edition_key: string;
+  subject: string[];
+  ia_collection: string[];
+  lendinglibrary: boolean;
+  printdisabled: boolean;
+  lending_edition: string;
+  lending_identifier: string;
+  author_name: Author[];
+  first_publish_year: number;
+  ia: string;
+  public_scan: boolean;
+  has_fulltext: boolean;
+  availability: Availability;
+}
+export interface AuthorBook{
+  key: string;
+  type: string;
+  name:string;
+  top_work:string;
+  work_count:number;
+}
 export interface BookResponse {
   key: string;
   name: string;
@@ -53,7 +79,19 @@ export interface BookResponse {
   work_count: number;
   works: Book[];
 }
-
+export interface SearchResponse {
+  numFound: number;
+  numFoundExact: boolean;
+  num_found: number;
+  q: string;
+  start:number;
+  docs: QueryBook[];
+}
+export interface AuthorResponse {
+  numFound: number;
+  numFoundExact: boolean;
+  docs: AuthorBook[];
+}
 export interface search {
   searchValue: string;
 }

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { Book } from 'src/app/core/models/book-response.model';
+import { AuthorBook, QueryBook } from 'src/app/core/models/book-response.model';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SubjectsService } from '../../core/services/subjects.service';
 
@@ -13,10 +13,13 @@ import { SubjectsService } from '../../core/services/subjects.service';
 })
 export class HomeComponent implements OnInit {
   searchValue: string = "";
+  searchAuthor: string= "";
   bookSearch: FormControl;
   isLoading: boolean = true;
+   
+  allSearchBooks: QueryBook[] = [];
 
-  allSearchBooks: Book[] = [];
+  allAuthorBooks: AuthorBook[]= [];
 
   constructor(
     private route: ActivatedRoute ,
@@ -35,19 +38,32 @@ export class HomeComponent implements OnInit {
     { name: 'Crypto' },
   ];
   getAllQueryBooks() {
-    // Perform your search operation here using the searchValue
     console.log('Searching for:', this.searchValue);
     this.subjectsService.getAllQueryBooks(this.searchValue).subscribe((data) => {
-      this.allSearchBooks = data?.works;
+      console.log(data)
+      this.allSearchBooks = data?.docs;
       // this.subjectsArray = data;
       this.isLoading = false;
     });
-    // You can make an API call or manipulate data locally based on the searchValue
+    console.log(this.allSearchBooks)
   }
   close(){
     this.searchValue="";
     console.log('clopsing for:', this.searchValue);
 
+  }
+  getByAuthor(){
+    console.log('Searching for author:', this.searchAuthor);
+    this.subjectsService.getByAuthor(this.searchAuthor).subscribe((data) => {
+      console.log(data)
+      this.allAuthorBooks = data?.docs;
+      this.isLoading = false;
+    });
+    console.log(this.allAuthorBooks)
+  }
+  closeAuthor(){
+    this.searchValue="";
+    console.log('clopsing for:', this.searchAuthor);
   }
   ngOnInit(): void {
     this.bookSearch.valueChanges

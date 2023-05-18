@@ -9,14 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
-
+import { AuthorSearchComponent } from './components/author-search/author-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrendingSubjectsComponent,
     HomeComponent,
-  AboutComponent,
+    AboutComponent,
+    AuthorSearchComponent,
   ],
   imports: [
     BrowserModule,

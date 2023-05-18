@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Book } from 'src/app/core/models/book-response.model';
+import { QueryBook } from 'src/app/core/models/book-response.model';
 
 
 @Component({
@@ -8,6 +8,6 @@ import { Book } from 'src/app/core/models/book-response.model';
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
-  @Input() booksList: Book[] = [];
+  @Input() booksList: QueryBook[] = [];
   @Input() subjectName = '';
 }
